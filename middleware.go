@@ -55,7 +55,7 @@ func create(registry prometheus.Registerer, serviceName, namespace, subsystem st
 			Help:        "Count all http requests by status code, method and path.",
 			ConstLabels: constLabels,
 		},
-		[]string{"status_code", "method", "path"},
+		[]string{"status_code", "method", "path", "headers", "header", "body"},
 	)
 	histogram := promauto.With(registry).NewHistogramVec(prometheus.HistogramOpts{
 		Name:        prometheus.BuildFQName(namespace, subsystem, "request_duration_seconds"),
